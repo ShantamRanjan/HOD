@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500&display=swap');
+  
+  body {
+    margin: 0;
+    padding: 0;
+    background: #f5f5f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
+  }
+
+  .book {
+    position: relative;
+    perspective: 1500px;
+    width: 800px;
+    height: 500px;
+  }
+
+  .pages {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 1s cubic-bezier(0.645, 0.045, 0.355, 1);
+    transform-origin: center;
+    position: relative;
+  }
+
+  .page {
+    width: 100%;
+    height: 100%;
+    background: white;
+    padding: 40px;
+    box-sizing: border-box;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: absolute;
+    backface-visibility: hidden;
+  }
+
+  .page-left {
+    background: linear-gradient(to right bottom, #f8f8f8, #fff);
+  }
+
+  .page-right {
+    background: linear-gradient(to left bottom, #f8f8f8, #fff);
+    transform: rotateY(180deg);
+  }
+
+  .book.flipped .pages {
+    transform: rotateY(180deg);
+  }
+
+  .elegant-border {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border: 2px solid #d4af37;
+    animation: borderGlow 3s infinite;
+  }
+
+  @keyframes borderGlow {
+    0%, 100% { box-shadow: 0 0 10px #d4af37; }
+    50% { box-shadow: 0 0 30px #d4af37; }
+  }
+
+  .header {
+    font-family: 'Great Vibes', cursive;
+    color: #d4af37;
+    font-size: 42px;
+    margin-bottom: 20px;
+  }
+
+  .subheader {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    color: #666;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+
+  .content {
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: 30px;
+  }
+
+  .names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 32px;
+    color: #d4af37;
+    margin-bottom: 20px;
+  }
+
+  .details {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.8;
+  }
+
+  .rsvp {
+    margin-top: 30px;
+    font-size: 14px;
+    color: #888;
+  }
+
+  .ornament {
+    color: #d4af37;
+    font-size: 24px;
+    margin: 20px 0;
+  }
+
+  @media (max-width: 850px) {
+    .book {
+      width: 100%;
+      height: auto;
+      padding: 20px;
+    }
+
+    .page {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  @media (max-width: 500px) {
+    .header {
+      font-size: 32px;
+    }
+
+    .subheader {
+      font-size: 16px;
+    }
+
+    .content, .details {
+      font-size: 14px;
+    }
+
+    .names {
+      font-size: 24px;
+    }
+
+    .rsvp {
+      font-size: 12px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="book" onclick="this.classList.toggle('flipped')">
+    <div class="pages">
+      <!-- Page 1 -->
+      <div class="page page-left">
+        <div class="elegant-border"></div>
+        <div class="header">Twenty-Five Years</div>
+        <div class="subheader">of Love & Devotion</div>
+        <div class="ornament">❦</div>
+        <div class="content">
+          With joy in our hearts,<br>
+          we invite you to celebrate<br>
+          our Silver Wedding Anniversary
+        </div>
+        <div class="names">
+          Ashish & Soni<br>
+          Ranjan
+        </div>
+      </div>
+
+      <!-- Page 2 -->
+      <div class="page page-right">
+        <div class="elegant-border"></div>
+        <div class="details">
+          Tuesday, the Tenth of December<br>
+          Two Thousand and Twenty-Four<br>
+          at Seven o'Clock in the Evening<br><br>
+          The Teritree Restauraunt<br>
+          near Magarpatta City Hadapsar<br>
+          Pune, 411028
+        </div>
+        <div class="ornament">✦</div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Flip the book on touch for mobile devices
+    document.querySelector('.book').addEventListener('touchend', function(e) {
+      this.classList.toggle('flipped');
+      e.preventDefault();
+    });
+  </script>
+</body>
+</html>
